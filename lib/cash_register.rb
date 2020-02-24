@@ -20,11 +20,11 @@ attr_accessor :total, :discount, :items, :last_transation_amount
    
    def apply_discount 
         if @discount == nil
-         p "There is no discount to apply."
-       else 
-     result = total * discount / 100
-      @total -= result
-      p "After the discount, the total comes to $#{@total}."
+           p "There is no discount to apply."
+        else 
+         result = total * discount / 100
+           @total -= result
+           p "After the discount, the total comes to $#{@total}."
        end
     end
 
@@ -32,7 +32,7 @@ attr_accessor :total, :discount, :items, :last_transation_amount
  
       self.items.pop
       self.total -=self.last_transation_amount
-      end
+  end
 
 
 
