@@ -1,31 +1,22 @@
 require 'pry'
 
 class CashRegister
-  attr_accessor :total, :discount
+attr_accessor :total, :discount, :items, :last_transation_amount
     def initialize(discount = nil)
- @total = 0
-   #@cash_register_with_discount = cash_register_with_discount
-   @discount = discount
-      end
+       @total = 0
+       @discount = discount
+       @items = []
+       @last_transation_amount = 0
+    end
   
-  def total
-   @total
-   end 
    
-   
-   def add_item(title, price, quantity = nil)
+ def add_item(title, price, quantity = 1)
+    self.last_transation_amount = price * quantity
+    self.items += [title] * quantity
+    self.total +=  price * quantity
      
-     @title = title 
-     @price = price 
- 
-     #binding.pry
-         if quantity
-            price *= quantity
-            @total += price
-         else 
-             @total += price
-    end 
-   end 
+    end
+   
    
    def apply_discount 
         if @discount == nil
@@ -33,14 +24,27 @@ class CashRegister
        else 
      result = total * discount / 100
       @total -= result
-      p "After the discount, the total comes to $800."
+      p "After the discount, the total comes to $#{@total}."
        end
     end
-    
-    def items 
-    all = []
-    all << @title 
-      
-      #binding.pry
-    end 
+
+  def void_last_transaction
+  # binding.pry
+  self.items.pop
+  self.total -=self.last_transation_amount
+  end
+
+
+#   attr_accessor :total, :cash_register_with_discount
+#   def initialize
+# @total = 0
+
+#   end
+  
+#   def total
+#     total
+#     binding.pry
+
+
+
 end
