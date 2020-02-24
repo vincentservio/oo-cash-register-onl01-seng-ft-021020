@@ -29,21 +29,12 @@ attr_accessor :total, :discount, :items, :last_transation_amount
     end
 
   def void_last_transaction
-  # binding.pry
-  self.items.pop
-  self.total -=self.last_transation_amount
-  end
+ 
+      self.items.pop
+      self.total -=self.last_transation_amount
+      end
 
 
-#   attr_accessor :total, :cash_register_with_discount
-#   def initialize
-# @total = 0
-
-#   end
-  
-#   def total
-#     total
-#     binding.pry
 
 
 
